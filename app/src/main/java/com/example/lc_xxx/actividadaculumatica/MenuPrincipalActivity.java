@@ -29,9 +29,11 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
             case R.id.btnGoMenuProductos:
                 Intent intentProducto = new Intent(getApplicationContext(), MenuProductoActivity.class);
                 startActivity(intentProducto);
+                break;
             case R.id.btnGoMenuTecnico:
                 Intent intentTecnico = new Intent(getApplicationContext(), MenuTecnicoActivity.class);
                 startActivity(intentTecnico);
+                break;
         }
     }
 

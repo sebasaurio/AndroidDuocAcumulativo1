@@ -36,8 +36,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btnRegistrar:
                 registrarCuenta();
+                break;
             case R.id.btnAcceder:
-                loginTecnico();
+                int auxAcceder = 0;
+                if(txtUsuarioLogin.length()==0){
+                    txtUsuarioLogin.setError("Campo requerido");
+                    auxAcceder +=1;
+                }
+                if(txtPasswordLogin.length()==0){
+                    txtPasswordLogin.setError("Campo requerido");
+                    auxAcceder += 1;
+                }
+                if(auxAcceder == 0){
+                    loginTecnico();
+                }
+
+
+                break;
             default:
                 break;
         }
@@ -45,8 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void loginTecnico(){
         TecnicoController controller = new TecnicoController();
-        String usuario = txtUsuarioLogin.getText().toString();
-        String password = txtPasswordLogin.getText().toString();
+        String usuario = txtUsuarioLogin.getText().toString().trim();
+        String password = txtPasswordLogin.getText().toString().trim();
         Log.i("DATOS", usuario+"-"+password);
         if(controller.loginTecnico(getApplicationContext(), usuario, password)){
             Toast.makeText(getApplicationContext(), "Accediendo al sistema", Toast.LENGTH_SHORT).show();

@@ -3,10 +3,22 @@ package com.example.lc_xxx.actividadaculumatica;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.example.lc_xxx.actividadaculumatica.Adapters.TecnicosAdapter;
+import com.example.lc_xxx.actividadaculumatica.Controladores.TecnicoController;
+import com.example.lc_xxx.actividadaculumatica.Entidades.Tecnico;
+
+import java.util.List;
 
 
 /**
@@ -18,6 +30,13 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ListarTecnicosFragment extends Fragment {
+
+
+    private RecyclerView recyclerTecnicos;
+    private TecnicosAdapter adapterTecnicos;
+
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,13 +77,30 @@ public class ListarTecnicosFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_listar_tecnicos, container, false);
+        View v = inflater.inflate(R.layout.fragment_listar_tecnicos, container, false);;
+        TecnicoController controller = new TecnicoController();
+        List<Tecnico> listaTecnicos = controller.selectTecnicos(getActivity().getApplicationContext());
+        Log.i("listaFrag", "-"+listaTecnicos.size());
+
+        recyclerTecnicos = (RecyclerView) v.findViewById(R.id.reciclerTecnicos);
+        adapterTecnicos = new TecnicosAdapter(listaTecnicos);
+        Log.i("listaFrag", "-"+adapterTecnicos.getItemCount());
+        recyclerTecnicos.setAdapter(adapterTecnicos);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerTecnicos.setLayoutManager(mLayoutManager);
+        recyclerTecnicos.setItemAnimator(new DefaultItemAnimator());
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

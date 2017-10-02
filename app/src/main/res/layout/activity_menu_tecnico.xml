@@ -15,7 +15,7 @@ tools:context="com.example.lc_xxx.actividadaculumatica.MenuTecnicoActivity">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Menu Tecnico"
-    android:textSize="30dp"
+    android:textSize="24dp"
     android:layout_gravity="center"
     />
 
@@ -51,14 +51,6 @@ tools:context="com.example.lc_xxx.actividadaculumatica.MenuTecnicoActivity">
             android:layout_height="wrap_content"
             android:text="Listar "
             android:layout_weight="1"
-            android:textSize="14dp" />
-
-        <Button
-            android:id="@+id/btnGoEliminarTecnico"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Eliminar "
             android:textSize="14dp" />
     </LinearLayout>
 

@@ -22,7 +22,7 @@ public class RegistrarActivity extends AppCompatActivity implements View.OnClick
         btnRegistarCuenta = (Button) findViewById(R.id.btnRegistrarCuenta);
         txtRegistrarNombre = (EditText) findViewById(R.id.txtRegistrarNombre);
         txtRegistrarRut = (EditText) findViewById(R.id.txtRegistrarRut);
-        txtRegistrarEdad = (EditText) findViewById(R.id.txtRegistrarTelefono);
+        txtRegistrarEdad = (EditText) findViewById(R.id.txtRegistrarEdad);
         txtRegistrarDireccion = (EditText) findViewById(R.id.txtRegistrarDireccion);
         txtRegistrarTelefono = (EditText) findViewById(R.id.txtRegistrarTelefono);
         txtRegistrarPassword = (EditText) findViewById(R.id.txtRegistrarPassword);
@@ -35,19 +35,31 @@ public class RegistrarActivity extends AppCompatActivity implements View.OnClick
             case R.id.btnRegistrarCuenta:
                 TecnicoController controller = new TecnicoController();
 
-                String nombre = txtRegistrarNombre.getText().toString();
-                String password = txtRegistrarPassword.getText().toString();
-                String direccion = txtRegistrarDireccion.getText().toString();
-                String rut = txtRegistrarRut.getText().toString();
-                int edad = Integer.parseInt(txtRegistrarEdad.getText().toString());
-                int telefono = Integer.parseInt(txtRegistrarTelefono.getText().toString());
+                int auxRegistrar = 0;
+                if(txtRegistrarNombre.getText().toString().length()==0){txtRegistrarNombre.setError("Campo requerido");auxRegistrar+=1;}
+                if(txtRegistrarPassword.getText().toString().length()==0){txtRegistrarPassword.setError("Campo requerido");auxRegistrar+=1;}
+                if(txtRegistrarDireccion.getText().toString().length()==0){txtRegistrarDireccion.setError("Campo requerido");auxRegistrar+=1;}
+                if(txtRegistrarRut.getText().toString().length()==0){txtRegistrarRut.setError("Campo requerido");auxRegistrar+=1;}
+                if(txtRegistrarEdad.getText().toString().length()==0){txtRegistrarEdad.setError("Campo requerido");auxRegistrar+=1;}
+                if(txtRegistrarTelefono.getText().toString().length()==0){txtRegistrarTelefono.setError("Campo requerido");auxRegistrar+=1;}
 
-                if(controller.registrarTecnico(getApplicationContext(), nombre,password,rut,edad,telefono,direccion)){
-                    Toast.makeText(getApplicationContext(), "Cuenta creada exitosamente", Toast.LENGTH_SHORT).show();
-                    finish();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Ha ocurrido un inconveniente con \n la conexion a la base de datos", Toast.LENGTH_SHORT).show();
+                if(auxRegistrar==0){
+                    String nombre = txtRegistrarNombre.getText().toString().trim();
+                    String password = txtRegistrarPassword.getText().toString().trim();
+                    String direccion = txtRegistrarDireccion.getText().toString();
+                    String rut = txtRegistrarRut.getText().toString();
+                    int edad = Integer.parseInt(txtRegistrarEdad.getText().toString());
+                    int telefono = Integer.parseInt(txtRegistrarTelefono.getText().toString());
+                    if(controller.registrarTecnico(getApplicationContext(), nombre,password,rut,edad,telefono,direccion)){
+                        Toast.makeText(getApplicationContext(), "Cuenta creada exitosamente", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Ha ocurrido un inconveniente con \n la conexion a la base de datos", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                break;
+
+
 
         }
     }

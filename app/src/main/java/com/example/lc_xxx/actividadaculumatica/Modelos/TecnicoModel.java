@@ -11,6 +11,7 @@ import com.example.lc_xxx.actividadaculumatica.Entidades.Tecnico;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class TecnicoModel {
@@ -61,21 +62,21 @@ public class TecnicoModel {
         content.put("edad", tecnico.getEdad());
         content.put("telefono", tecnico.getTelefono());
         content.put("direccion", tecnico.getDireccion());
-        content.put("password", tecnico.getPassword());
 
         int i = db.update("tecnico",content, "rut=?", parametros);
         return i > 0;
     }
 
-    public ArrayList<Tecnico> selectTecnicos(Context context){
+    public List<Tecnico> selectTecnicos(Context context){
         ConexionHelper con = new ConexionHelper(context, nombreDB, null, 1);
         SQLiteDatabase db = con.getReadableDatabase();
         Tecnico tecnico = null;
 
-        ArrayList<Tecnico> listaTecnico = new ArrayList<>();
+        List<Tecnico> listaTecnico = new ArrayList<>();
 
         Cursor cursor = db.rawQuery("SELECT id_tecnico,rut,nombre,edad,telefono,direccion,password from tecnico", null);
         cursor.moveToFirst();
+        Log.i("cantidadTectnio","--"+cursor.getColumnCount());
         while(cursor.moveToNext()){
             tecnico = new Tecnico();
             tecnico.setId_tecnico(cursor.getInt(0));
@@ -85,15 +86,28 @@ public class TecnicoModel {
             tecnico.setTelefono(cursor.getInt(4));
             tecnico.setDireccion(cursor.getString(5));
             tecnico.setPassword(cursor.getString(6));
+            Log.i("datos tecnico",cursor.getString(2));
+
             listaTecnico.add(tecnico);
         }
+        Log.i("lista", "-"+listaTecnico.size());
         return listaTecnico;
     }
 
-    public void selectTecnicoPorRut(Context context, Tecnico tecnico){
+    public Tecnico selectTecnicoPorRut(Context context, Tecnico tecnico){
         ConexionHelper con = new ConexionHelper(context, nombreDB, null, 1);
         SQLiteDatabase db = con.getReadableDatabase();
         String[] parametros = {tecnico.getRut()};
+
+        Cursor cursor = db.rawQuery("SELECT id_tecnico,rut,nombre,edad,telefono,direccion,password from tecnico where rut = ?", parametros);
+        cursor.moveToFirst();
+
+        tecnico.setNombre(cursor.getString(2));
+        tecnico.setEdad(cursor.getInt(3));
+        tecnico.setTelefono(cursor.getInt(4));
+        tecnico.setDireccion(cursor.getString(5));
+        tecnico.setPassword(cursor.getString(6));
+        return tecnico;
     }
 
     public boolean loginTecnico(Context context, Tecnico tecnico){
