@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_agregarProducto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingBottom="@dimen/activity_vertical_margin"
+android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+android:orientation="vertical"
+tools:context="com.example.lc_xxx.actividadaculumatica.AgregarProductoActivity">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Producto"
+    android:textSize="30dp"
+    android:layout_gravity="center" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="5"
+    android:layout_marginTop="20dp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tipo Producto: "
+        android:textSize="20dp"
+        android:layout_weight="1.5"
+        />
+
+    <Spinner
+        android:id="@+id/spinnerTipoProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="5"
+    android:layout_marginTop="20dp"
+    >
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre : "
+        android:textSize="20dp"
+        android:layout_weight="1.5"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3.5"
+        android:id="@+id/txtNombreCliente"
+        android:hint="Ingrese nombre cliente"
+        />
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="5"
+    android:layout_marginTop="20dp"
+    >
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Telefono : "
+        android:textSize="20dp"
+        android:layout_weight="1.5"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3.5"
+        android:id="@+id/txtTelefonoCliente"
+        android:inputType="number"
+        android:hint="Ingrese Telefono "
+        />
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="4"
+    android:layout_marginTop="20dp"
+    android:orientation="horizontal"
+    >
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Cancelar"
+        android:id="@+id/btnCancelarProductoAgregar"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Agregar"
+        android:id="@+id/btnAgregarProducto"/>
+
+</LinearLayout>
+
+
+</LinearLayout>
