@@ -19,40 +19,55 @@ tools:context="com.example.lc_xxx.actividadaculumatica.MenuTecnicoActivity">
     android:layout_gravity="center"
     />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agregar Tecnico"
-        android:textSize="18dp"
-        android:id="@+id/btnGoAgregarTecnico"
-        />
-    <Button
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnGoAgregarTecnico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Agregar"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/btnGoModificarTecnico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Modificar"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Modificar Tecnico"
-        android:textSize="18dp"
-        android:id="@+id/btnGoModificarTecnico"
-        />
-    <Button
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnGoListarTecnico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listar "
+            android:layout_weight="1"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/btnGoEliminarTecnico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Eliminar "
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/containerTecnicos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Listar Tecnico"
-        android:textSize="18dp"
-        android:id="@+id/btnGoListarTecnico"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Eliminar Tecnico"
-        android:textSize="18dp"
-        android:id="@+id/btnGoEliminarTecnico"
-        />
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
 
-</LinearLayout>
 </LinearLayout>
